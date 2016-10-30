@@ -1,6 +1,7 @@
 require "ruby_on_monorail/version"
-require "ruby_on_monorail/array"
 require "ruby_on_monorail/routing"
+require "ruby_on_monorail/util"
+require "ruby_on_monorail/dependencies"
 
 module RubyOnMonorail
   class Application
