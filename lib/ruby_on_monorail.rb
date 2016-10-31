@@ -2,6 +2,7 @@ require "ruby_on_monorail/version"
 require "ruby_on_monorail/routing"
 require "ruby_on_monorail/util"
 require "ruby_on_monorail/dependencies"
+require "ruby_on_monorail/controller"
 
 module RubyOnMonorail
   class Application
@@ -16,6 +17,7 @@ module RubyOnMonorail
 
       klass, act = get_controller_and_action(env)
       controller = klass.new(env)
+
       begin
         text = controller.send(act)
       rescue
@@ -23,14 +25,6 @@ module RubyOnMonorail
       end
 
       [200, {'Content-Type' => 'text/html'}, [text]]
-    end
-  end
-
-  class Controller
-    attr_reader :env
-
-    def initialize(env)
-      @env = env
     end
   end
 end
